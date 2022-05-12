@@ -1,6 +1,7 @@
 package hcmute.edu.vn.foody_04;
 
 import android.content.Intent;
+import android.database.CursorWindow;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.lang.reflect.Field;
 
 import hcmute.edu.vn.foody_04.Beans.User;
 import hcmute.edu.vn.foody_04.DAO.DAO;
@@ -36,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        try {
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         clickToLogout = 0;
 
         referenceFragment();

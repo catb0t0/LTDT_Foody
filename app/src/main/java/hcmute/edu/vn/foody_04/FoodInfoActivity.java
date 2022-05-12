@@ -16,6 +16,7 @@ import hcmute.edu.vn.foody_04.Beans.Food;
 import hcmute.edu.vn.foody_04.Beans.FoodSize;
 import hcmute.edu.vn.foody_04.Beans.Order;
 import hcmute.edu.vn.foody_04.Beans.OrderDetail;
+import hcmute.edu.vn.foody_04.Beans.Restaurant;
 import hcmute.edu.vn.foody_04.Beans.User;
 import hcmute.edu.vn.foody_04.DAO.DAO;
 import hcmute.edu.vn.foody_04.database.DbHandler;
@@ -47,7 +48,8 @@ public class FoodInfoActivity extends AppCompatActivity {
             Bundle bundle = intent.getBundleExtra("foodDetail");
 
             Food food = (Food) bundle.getSerializable("food");
-            //Restaurant restaurant = (Restaurant) bundle.getSerializable("restaurant");
+            foodSize = new FoodSize();
+            Restaurant restaurant = (Restaurant) bundle.getSerializable("restaurant");
             FoodSize foodSizeS = (FoodSize) bundle.getSerializable("foodSizeS");
             FoodSize foodSizeM = (FoodSize) bundle.getSerializable("foodSizeM");
             FoodSize foodSizeL = (FoodSize) bundle.getSerializable("foodSizeL");
@@ -63,6 +65,7 @@ public class FoodInfoActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             tvPrice.setText(tvPriceSizeS.getText());
+                            foodSize = foodSizeS;
                         }
                     });
                 } else {
@@ -75,6 +78,7 @@ public class FoodInfoActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             tvPrice.setText(tvPriceSizeM.getText());
+                            foodSize = foodSizeM;
                         }
                     });
                 } else {
@@ -87,6 +91,7 @@ public class FoodInfoActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             tvPrice.setText(tvPriceSizeL.getText());
+                            foodSize = foodSizeL;
                         }
                     });
                 } else {
@@ -97,25 +102,33 @@ public class FoodInfoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         // Make cart if don't have
-                        Cursor cursor = dao.getCart(user.getId());
-                        if (!cursor.moveToFirst()){
-                            dao.addOrder(new Order(1, user.getId(), "", "", 0d, "Craft"));
-                            cursor = dao.getCart(user.getId());
+
+                        if(foodSize == foodSizeL || foodSize == foodSizeS || foodSize == foodSizeM) {
+                            //Cursor cursor = dao.getCart(/*user.getId()*/1);
+                            Cursor cursor = dao.getCart(MainActivity.user.getId());
+                            if (!cursor.moveToFirst()) {
+//                            dao.addOrder(new Order(1, user.getId(), "", "", 0d, "Craft"));
+//                            cursor = dao.getCart(user.getId());
+                                dao.addOrder(new Order(1, MainActivity.user.getId(), "", "", 0d, "Craft"));
+                                cursor = dao.getCart(/*user.getId()*/1);
+                            }
+
+                            // add order detail
+                            cursor.moveToFirst();
+                            dao.addOrderDetail(new OrderDetail(cursor.getInt(0),
+                                    foodSize.getFoodId(), foodSize.getSize(), foodSize.getPrice()));
+
+                            Toast.makeText(FoodInfoActivity.this, "Thêm món ăn vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();
                         }
-
-                        // add order detail
-                        cursor.moveToFirst();
-                        dao.addOrderDetail(new OrderDetail(cursor.getInt(0),
-                                foodSize.getFoodId(), foodSize.getSize(), foodSize.getPrice()));
-
-                        Toast.makeText(FoodInfoActivity.this, "Thêm món ăn vào giỏ hàng thành công!", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(FoodInfoActivity.this, "Vui lòng chọn size", Toast.LENGTH_SHORT).show();
                     }
                 });
-                //tvRestaurantName.setText(String.format("Tên cửa hàng \n%s", restaurant.getName()));
-                //tvRestaurantAddress.setText(String.format("Địa chỉ\n%s", restaurant.getAddress()));
+                tvRestaurantName.setText(String.format("Tên cửa hàng \n%s", restaurant.getName()));
+                tvRestaurantAddress.setText(String.format("Địa chỉ\n%s", restaurant.getAddress()));
 
-                tvRestaurantName.setText("000SSS");
-                tvRestaurantAddress.setText("restaurant.getAddress())");
+                //tvRestaurantName.setText("000SSS");
+                //tvRestaurantAddress.setText("restaurant.getAddress())");
 
                 Double defaultPrice = bundle.getDouble("defaultPrice");
                 tvPrice.setText(getRoundPrice(defaultPrice));

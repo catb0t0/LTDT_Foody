@@ -84,7 +84,8 @@ public class RestaurantFragment extends Fragment {
                             .commit();
                 }
             });
-            foodCartContainer = mainView.findViewById(R.id.categoryFoodCartContainer);
+
+            foodCartContainer = (LinearLayout) mainView.findViewById(R.id.categoryFoodCartContainer);
             getRestaurantData();
         }
         return mainView;
@@ -97,7 +98,7 @@ public class RestaurantFragment extends Fragment {
         catch (Exception e){}
         // Add food cart to layout container
 
-        dao = new DAO(mainView.getContext());
+            dao = new DAO(mainView.getContext());
         ArrayList<Restaurant> restaurantArrayList;
 
         restaurantArrayList = dao.getAllRestaurant();

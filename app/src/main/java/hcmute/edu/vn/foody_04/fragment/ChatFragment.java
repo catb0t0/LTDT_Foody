@@ -22,6 +22,7 @@ import hcmute.edu.vn.foody_04.Beans.Order;
 import hcmute.edu.vn.foody_04.Beans.OrderDetail;
 import hcmute.edu.vn.foody_04.Beans.Restaurant;
 import hcmute.edu.vn.foody_04.MainActivity;
+import hcmute.edu.vn.foody_04.PaymentActivity;
 import hcmute.edu.vn.foody_04.R;
 import hcmute.edu.vn.foody_04.ViewOrderActivity;
 import hcmute.edu.vn.foody_04.components.CartCard;
@@ -95,16 +96,15 @@ public class ChatFragment extends Fragment {
             //startActivity(new Intent(getActivity(), PaymentActivity.class));
         });
 
+        LoadOrder("craft");
+        status = "craft";
 
         btnGioHang.setOnClickListener(view ->{
             resetAttribute();
             btnGioHang.setBackground(ContextCompat.getDrawable(getContext(),R.color.blue));
             tvGioHang.setTextColor(Color.WHITE);
 
-            //Function here
-
-
-
+            LoadOrder("craft");
         });
 
         btnDangDen.setOnClickListener(view->{
@@ -112,12 +112,7 @@ public class ChatFragment extends Fragment {
             btnDangDen.setBackground(ContextCompat.getDrawable(getContext(),R.color.blue));
             tvDangDen.setTextColor(Color.WHITE);
 
-            //Function here
-
-
-
-
-
+            LoadOrder("moving");
         });
 
         btnLichSu.setOnClickListener(view -> {
@@ -125,8 +120,26 @@ public class ChatFragment extends Fragment {
             btnLichSu.setBackground(ContextCompat.getDrawable(getContext(),R.color.blue));
             tvLichSu.setTextColor(Color.WHITE);
 
+            LoadOrder("history");
         });
+        tvGioHang = mainView.findViewById(R.id.tvGioHang);
+        tvDangDen = mainView.findViewById(R.id.tvDangDen);
+        tvLichSu = mainView.findViewById(R.id.tvLichSu);
 
+        Button btnThanhToan = mainView.findViewById(R.id.btnChatThanhToan);
+        btnThanhToan.setOnClickListener(view -> {
+            if (!status.equals("craft"))
+                return;
+
+            Cursor cursor = MainActivity.dao.getCart(MainActivity.user.getId());
+            if (!cursor.moveToFirst())
+                return;
+
+            PaymentActivity.user = MainActivity.user;
+            Intent intent = new Intent(getActivity(), PaymentActivity.class);
+            intent.putExtra("orderId", cursor.getInt(0));
+            startActivity(intent);
+        });
 
         return mainView;
     }
@@ -153,8 +166,8 @@ public class ChatFragment extends Fragment {
                     }
                 }
                 break;
-            case "coming": {
-                ArrayList<Order> orderArrayList = MainActivity.dao.getOrderOfUser(MainActivity.user.getId(), "Coming");
+            case "moving": {
+                ArrayList<Order> orderArrayList = MainActivity.dao.getOrderOfUser(MainActivity.user.getId(), "Moving");
                 if (orderArrayList.size() > 0) {
                     for (Order order : orderArrayList) {
                         OrderCard card = new OrderCard(getContext(), order);

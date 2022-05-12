@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import hcmute.edu.vn.foody_04.Beans.Food;
 import hcmute.edu.vn.foody_04.Beans.FoodSize;
+import hcmute.edu.vn.foody_04.Beans.Restaurant;
 import hcmute.edu.vn.foody_04.Beans.User;
 import hcmute.edu.vn.foody_04.DAO.DAO;
 import hcmute.edu.vn.foody_04.components.FoodCard;
@@ -81,11 +82,11 @@ public class CategoryActivity extends AppCompatActivity {
         }
 
         for (Food food : foodArrayList) {
-            //Restaurant restaurant = dao.getRestaurantInformation(food.getRestaurantId());
+            Restaurant restaurant = dao.getRestaurantInformation(food.getRestaurantId());
             FoodSize foodSize = dao.getFoodDefaultSize(food.getId());
 
-            //FoodCard foodCard = new FoodCard(this, food, foodSize.getPrice(), restaurant.getName());
-            FoodCard foodCard = new FoodCard(this, food, foodSize.getPrice(), "restaurant.getName()");
+            FoodCard foodCard = new FoodCard(this, food, foodSize.getPrice(), restaurant.getName());
+            //FoodCard foodCard = new FoodCard(this, food, foodSize.getPrice(), "restaurant.getName()");
 
             foodCard.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -94,7 +95,7 @@ public class CategoryActivity extends AppCompatActivity {
                     ArrayList<FoodSize> foodSizeArrayList = dao.getAllFoodSize(food.getId());
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("food", food);
-                    bundle.putSerializable("restaurant", "restaurant");
+                    bundle.putSerializable("restaurant", restaurant);
                     bundle.putSerializable("foodSizeS", foodSizeArrayList.get(0));
 
                     if (foodSizeArrayList.size() < 3) {

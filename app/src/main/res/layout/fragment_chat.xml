@@ -58,7 +58,7 @@
                     android:id="@+id/tvDangDen"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="ĐANG ĐÉN"
+                    android:text="Đang đến"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
                     android:gravity="center"/>
@@ -73,7 +73,7 @@
                     android:id="@+id/tvLichSu"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="LỊCH SỬ"
+                    android:text="Lịch sử"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
                     android:gravity="center"/>

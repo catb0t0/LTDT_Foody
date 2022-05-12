@@ -31,7 +31,7 @@ import hcmute.edu.vn.foody_04.R;
 public class DbHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "foody.sqlite";
-    private static final Integer DATABASE_VERSION = 1;
+    private static final Integer DATABASE_VERSION = 4;
     private static final SQLiteDatabase.CursorFactory DATABASE_FACTORY = null;
     private final Context context;
 
@@ -59,7 +59,8 @@ public class DbHandler extends SQLiteOpenHelper {
     public Cursor getDataRow(String sql) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
-        c.moveToFirst();
+        if (c != null)
+            c.moveToFirst();
         return c;
     }
 
@@ -271,6 +272,16 @@ public class DbHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
+        //Create table "Order"
+        String queryCreateOrder = "CREATE TABLE IF NOT EXISTS tblOrder(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "user_id INTEGER," +
+                "address NVARCHAR(200)," +
+                "date_order VARCHAR(20)," +
+                "total_value DOUBLE," +
+                "status VARCHAR(200))";
+        sqLiteDatabase.execSQL(queryCreateOrder);
 
         //Create table "FoodSize"
         String queryCreateFoodSize = "CREATE TABLE IF NOT EXISTS tblFoodSize(" +

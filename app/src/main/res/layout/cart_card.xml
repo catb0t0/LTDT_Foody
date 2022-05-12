@@ -60,14 +60,14 @@
                 android:layout_marginStart="15sp" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btnDeleteCartItem"
-            android:layout_width="0sp"
+        <Button
+            android:id="@+id/buttonXoaCart"
+            android:layout_width="58dp"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:background="@drawable/bg_box_rounded"
-            android:scaleType="fitXY"
-            android:layout_weight="2"
-            android:src="@drawable/delete"/>
+            android:text="Xóa" />
 
     </LinearLayout>
 

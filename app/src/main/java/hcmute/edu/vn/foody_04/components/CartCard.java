@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -55,7 +55,7 @@ public class CartCard extends LinearLayout {
         TextView tvAddress = findViewById(R.id.tvFoodRestaurantAddress);
         TextView tvPrice = findViewById(R.id.tvFoodPrice);
 
-        ImageButton btnDelete = findViewById(R.id.btnDeleteCartItem);
+        Button btnDelete = findViewById(R.id.buttonXoaCart);
         btnDelete.setOnClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
             dialog.setMessage("Bạn có muốn xóa món " + food.getName() + " không?");
@@ -67,7 +67,7 @@ public class CartCard extends LinearLayout {
             dialog.show();
         });
 
-        if(!activatedDelete) btnDelete.setVisibility(INVISIBLE);
+        //if(!activatedDelete) btnDelete.setVisibility(INVISIBLE);
 
         // Set information for cart card
         image.setImageBitmap(DbHandler.convertByteArrayToBitmap(food.getImage()));
