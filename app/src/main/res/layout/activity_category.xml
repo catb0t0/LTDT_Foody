@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:backgroundTint="#E5E5E5"
+    tools:context=".CategoryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgViewCategoryMenu_Main"
+            android:layout_width="34dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="69px"
+            android:src="@drawable/menu" />
+
+        <ImageView
+            android:layout_marginLeft="234px"
+            android:id="@+id/txtViewLogo_Main"
+            android:layout_gravity="center"
+            android:layout_width="351px"
+            android:layout_height="149px"
+            android:src="@drawable/logotasty" />
+
+        <ImageView
+            android:id="@+id/imgView_CategoryCart"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="69px"
+            android:layout_weight="1"
+            android:src="@drawable/cart_icon"
+            app:tint="@color/blue" />
+
+    </LinearLayout>
+
+    <SearchView
+        android:id="@+id/CategorySearch"
+        android:layout_gravity="center"
+        android:queryHint="Tìm kiếm..."
+        android:layout_width="951px"
+        android:layout_height="144px"
+        android:background="@drawable/bg_search_view"
+        android:elevation="5sp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="116dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="188px"
+                android:layout_height="170px"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/img1_category" />
+
+            <ImageView
+                android:layout_width="188px"
+                android:layout_height="170px"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/img2_category" />
+
+            <ImageView
+                android:layout_width="188px"
+                android:layout_height="170px"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/img3_category" />
+
+            <ImageView
+                android:layout_width="188px"
+                android:layout_height="170px"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/img4_category" />
+
+            <ImageView
+                android:layout_width="188px"
+                android:layout_height="170px"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:src="@drawable/img5_category" />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_marginTop="15dp"
+        android:id="@+id/Foodbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="6sp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/categoryFoodCartContainer">
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

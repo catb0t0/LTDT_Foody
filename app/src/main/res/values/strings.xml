@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Foody_04</string>
+    <string name="FoodName">Mì cay</string>
+    <string name="food_description">Mỳ cay bao gồm nhiều chất sơ và chất đạm gồm các dưỡng chất cung cấp năng lượng cho cơ thể</string>
+    <string name="size_s">S</string>
+    <string name="size_s_describe">Small size</string>
+    <string name="size_m">M</string>
+    <string name="size_m_describe">Medium size</string>
+    <string name="size_l">L</string>
+    <string name="size_l_describe">Large size</string>
+    <string name="money_text">13.000 VND</string>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string name="add_to_cart">Thêm vào giỏ hàng</string>
+    <string name="total">Tổng cộng</string>
+    <string name="food_type">Loại món ăn</string>
+    <string name="address">Địa chỉ</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home">Trang chủ</string>
+    <string name="saved_lower">Đã lưu</string>
+    <string name="notify_lower">Thông báo</string>
+    <string name="information">Thông tin</string>
+    <string name="cart">Giỏ hàng</string>
+    <string name="content_description_image">FOOD</string>
+
+    <string name="restaurant_name">KFC</string>
+    <string name="restaurant_time">7:00 - 23:00</string>
+    <string name="restaurant_address">Address</string>
+
+</resources>

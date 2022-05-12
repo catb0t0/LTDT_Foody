@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.RestaurantFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgViewResturantMenu_Main"
+            android:layout_width="34dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="69px"
+            android:src="@drawable/menu" />
+
+        <ImageView
+            android:layout_marginLeft="234px"
+            android:id="@+id/txtViewLogo_Main"
+            android:layout_gravity="center"
+            android:layout_width="351px"
+            android:layout_height="149px"
+            android:src="@drawable/logotasty"/>
+    </LinearLayout>
+
+    <SearchView
+        android:id="@+id/search_bar"
+        android:layout_width="951px"
+        android:layout_height="144px"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_search_view"
+        android:elevation="5sp"
+        android:queryHint="Tìm kiếm..." />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="121dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="443px"
+                android:layout_height="340px"
+                android:src="@drawable/img1_main" />
+
+            <ImageView
+                android:layout_width="477px"
+                android:layout_height="340px"
+                android:src="@drawable/img2_main"/>
+
+            <ImageView
+                android:layout_width="477px"
+                android:layout_height="340px"
+                android:src="@drawable/img3_main"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/RestaurantContainer">
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

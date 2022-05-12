@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#E5E5E5"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".FoodInfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgViewMenu_Back"
+            android:layout_width="34dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="69px"
+            android:src="@drawable/icon_back" />
+
+        <ImageView
+            android:id="@+id/txtViewLogo_FoodInfo"
+            android:layout_width="351px"
+            android:layout_height="149px"
+            android:layout_gravity="center"
+            android:layout_marginLeft="234px"
+            android:src="@drawable/logotasty" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgViewFoodInfo"
+        android:layout_width="940px"
+        android:layout_height="560px"
+        android:layout_gravity="center"
+        android:src="@drawable/img_foodinfo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtViewFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="69px"
+            android:layout_marginTop="10dp"
+            android:text="Mỳ cay Hàn Quốc"
+            android:textColor="@color/blue"
+            android:textSize="64px"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/layout_size_S"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="11sp"
+                android:background="@drawable/size_box"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/size_s"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/size_s_describe"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="30sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/size_box"
+                    android:backgroundTint="#2B0AE3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPriceSizeS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/money_text"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_size_M"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="35dp"
+                android:background="@drawable/size_box"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/size_m"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/size_m_describe"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="30sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/size_box"
+                    android:backgroundTint="#2B0AE3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPriceSizeM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/money_text"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_size_L"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="35dp"
+                android:background="@drawable/size_box"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/size_l"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/size_l_describe"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="30sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/size_box"
+                    android:backgroundTint="#2B0AE3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPriceSizeL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/money_text"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="170sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="170sp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtViewDesciption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="69px"
+                    android:text="Mô tả"
+                    android:textColor="@color/blue"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtViewFoodInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/food_description"
+                    android:textColor="@color/blue"
+                    android:textSize="40px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="11sp"
+                    android:text="Thông tin cửa hàng"
+                    android:textColor="@color/blue"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvRestaurantName"
+                    android:layout_width="303dp"
+                    android:layout_height="91dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="2dp"
+                    android:text="Foody App"
+                    android:textColor="@color/blue"
+                    android:textSize="40px" />
+
+                <TextView
+                    android:id="@+id/tvRestaurantAddress"
+                    android:layout_width="303dp"
+                    android:layout_height="91dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/address"
+                    android:textColor="@color/blue"
+                    android:textSize="40px" />
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_add_to_cart"
+            android:orientation="horizontal"
+            android:layout_weight="3">
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="11sp"
+                android:text="@string/total"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Tổng cộng"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAddToCart"
+            android:layout_width="431dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="0dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Thêm vào giỏ hàng"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+    </LinearLayout>
+</LinearLayout>
