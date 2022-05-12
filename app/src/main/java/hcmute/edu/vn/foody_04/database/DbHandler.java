@@ -310,6 +310,15 @@ public class DbHandler extends SQLiteOpenHelper {
                 "password VARCHAR(100))";
         sqLiteDatabase.execSQL(queryCreateUser);
 
+        //Create table "OrderDetail"
+        String queryCreateOrderDetail = "CREATE TABLE IF NOT EXISTS tblOrderDetail(" +
+                "order_id INTEGER," +
+                "food_id INTEGER," +
+                "size INTEGER," +
+                "price DOUBLE," +
+                "PRIMARY KEY (order_id, food_id, size))";
+        sqLiteDatabase.execSQL(queryCreateOrderDetail);
+
         Log.i("SQLite", "DATABASE CREATED");
         addSampleData(sqLiteDatabase);
         Log.i("SQLite", "ADDED DATA");
