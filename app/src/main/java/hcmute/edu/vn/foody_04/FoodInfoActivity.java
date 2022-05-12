@@ -97,14 +97,15 @@ public class FoodInfoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         // Make cart if don't have
-                        Cursor cursor = dao.getCart(user.getId());
+                        Cursor cursor = dao.getCart(/*user.getId()*/1);
                         if (!cursor.moveToFirst()){
-                            dao.addOrder(new Order(1, user.getId(), "", "", 0d, "Craft"));
-                            cursor = dao.getCart(user.getId());
-                        }
+                            dao.addOrder(new Order(1, /*user.getId()*/1, "", "", 0d, "Craft"));
+                            cursor = dao.getCart(/*user.getId()*/1);
+                        }//này hết bug
 
                         // add order detail
                         cursor.moveToFirst();
+                        foodSize=new FoodSize(1,1,9000.0);//
                         dao.addOrderDetail(new OrderDetail(cursor.getInt(0),
                                 foodSize.getFoodId(), foodSize.getSize(), foodSize.getPrice()));
 

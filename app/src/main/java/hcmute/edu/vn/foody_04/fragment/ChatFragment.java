@@ -95,12 +95,13 @@ public class ChatFragment extends Fragment {
             //startActivity(new Intent(getActivity(), PaymentActivity.class));
         });
 
+        LoadOrder("craft");
+        status = "craft";
 
         btnGioHang.setOnClickListener(view ->{
             resetAttribute();
             btnGioHang.setBackground(ContextCompat.getDrawable(getContext(),R.color.blue));
             tvGioHang.setTextColor(Color.WHITE);
-
             //Function here
 
 

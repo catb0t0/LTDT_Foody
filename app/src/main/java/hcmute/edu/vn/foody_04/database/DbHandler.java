@@ -58,7 +58,7 @@ public class DbHandler extends SQLiteOpenHelper {
 
     public Cursor getDataRow(String sql) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery(sql, null);
+        Cursor c = db.rawQuery(sql, null);//nó bị ở đây
         c.moveToFirst();
         return c;
     }
@@ -317,6 +317,15 @@ public class DbHandler extends SQLiteOpenHelper {
                 "size INTEGER," +
                 "price DOUBLE," +
                 "PRIMARY KEY (order_id, food_id, size))";
+        //Create table "Order"
+        String queryCreateOrder = "CREATE TABLE IF NOT EXISTS tblOrder(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "user_id INTEGER," +
+                "address NVARCHAR(200)," +
+                "date_order VARCHAR(20)," +
+                "total_value DOUBLE," +
+                "status VARCHAR(200))";
+        sqLiteDatabase.execSQL(queryCreateOrder);
         sqLiteDatabase.execSQL(queryCreateOrderDetail);
 
         Log.i("SQLite", "DATABASE CREATED");
