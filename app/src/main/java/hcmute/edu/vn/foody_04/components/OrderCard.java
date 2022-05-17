@@ -3,6 +3,7 @@ package hcmute.edu.vn.foody_04.components;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,11 +33,13 @@ public class OrderCard extends LinearLayout {
         TextView tvStatus = findViewById(R.id.tvOrderStatus);
 
         Button btnConfirm = findViewById(R.id.btnConfirmOrder);
-        btnConfirm.setOnClickListener(view -> {
-            order.setStatus("Delivered");
-            MainActivity.dao.updateOrder(order);
-            Toast.makeText(context, "Đã cập nhật lại trạng thái!", Toast.LENGTH_SHORT).show();
-
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                order.setStatus("Delivered");
+                MainActivity.dao.updateOrder(order);
+                Toast.makeText(context, "Đã cập nhật lại trạng thái!", Toast.LENGTH_SHORT).show();
+            }
         });
         if(order.getStatus().equals("Delivered")){
             btnConfirm.setEnabled(false);

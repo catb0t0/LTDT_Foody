@@ -20,10 +20,10 @@ import hcmute.edu.vn.foody_04.DAO.DAO;
 
 public class UserInformationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private EditText edUser_name, edUser_phone, edUser_DoB, edUser_password;
-    private String newUser_name, newUser_phone, newUser_DoB, newUser_gender, newUser_password;
+    private EditText editTextUsername, editTextUserphone, editTextUserDoB;
+    private String newUserName, newUserPhone, newUserDoB, newUserGender, newUserPassword;
     private Button btnChange, btnCancel;
-    private Spinner spUser_gender;
+    private Spinner spinnerUserGender;
     private Calendar calendar;
     private DAO dao;
 
@@ -32,9 +32,9 @@ public class UserInformationActivity extends AppCompatActivity implements Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_information);
         referencesComponent();
-        edUser_name.setText(MainActivity.user.getName());
-        edUser_phone.setText(MainActivity.user.getPhone());
-        edUser_DoB.setText(MainActivity.user.getDateOfBirth());
+        editTextUsername.setText(MainActivity.user.getName());
+        editTextUserphone.setText(MainActivity.user.getPhone());
+        editTextUserDoB.setText(MainActivity.user.getDateOfBirth());
         switch (MainActivity.user.getGender()) {
             case "Male":
                 break;
@@ -48,42 +48,55 @@ public class UserInformationActivity extends AppCompatActivity implements Adapte
     }
 
     private void referencesComponent() {
-        edUser_name = findViewById(R.id.editText_user_name);
-        edUser_phone = findViewById(R.id.editText_user_phone);
-        edUser_DoB = findViewById(R.id.user_birthday_pick);
-        edUser_DoB.setOnClickListener(view -> PickDate());
-
-        spUser_gender = findViewById(R.id.spinner_user_gender);
-        ArrayAdapter<CharSequence> genders = ArrayAdapter.createFromResource(this, R.array.genders, android.R.layout.simple_spinner_dropdown_item);
-        genders.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spUser_gender.setAdapter(genders);
-        spUser_gender.setOnItemSelectedListener(this);
-
-        btnChange = findViewById(R.id.btnChangeUserInformation);
-        btnChange.setOnClickListener(view -> {
-            newUser_name = edUser_name.getText().toString().trim();
-            newUser_gender = spUser_gender.getSelectedItem().toString();
-            newUser_phone = edUser_phone.getText().toString().trim();
-            newUser_DoB = edUser_DoB.getText().toString();
-            newUser_password = MainActivity.user.getPassword();
-
-            if (newUser_name.isEmpty() || newUser_phone.isEmpty() || newUser_DoB.isEmpty()) {
-                Toast.makeText(this, "Vui lòng điền đủ thông tin!", Toast.LENGTH_SHORT).show();
-            } else {
-                String oldPassword = MainActivity.user.getPassword();
-                User editUser = new User(MainActivity.user.getId(),
-                        newUser_name, newUser_gender, newUser_DoB, newUser_phone,
-                        MainActivity.user.getUsername(),
-                        newUser_password);
-                dao.updateUser(editUser);
-
-                MainActivity.user = editUser;
-                finish();
+        editTextUsername = findViewById(R.id.editText_user_name);
+        editTextUserphone = findViewById(R.id.editText_user_phone);
+        editTextUserDoB = findViewById(R.id.user_birthday_pick);
+        editTextUserDoB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PickDate();
             }
         });
 
+        spinnerUserGender = findViewById(R.id.spinner_user_gender);
+        ArrayAdapter<CharSequence> genders = ArrayAdapter.createFromResource(this, R.array.genders, android.R.layout.simple_spinner_dropdown_item);
+        genders.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerUserGender.setAdapter(genders);
+        spinnerUserGender.setOnItemSelectedListener(this);
+
+        btnChange = findViewById(R.id.btnChangeUserInformation);
+        btnChange.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+                                             newUserName = editTextUsername.getText().toString().trim();
+                                             newUserGender = spinnerUserGender.getSelectedItem().toString();
+                                             newUserPhone = editTextUserphone.getText().toString().trim();
+                                             newUserDoB = editTextUserDoB.getText().toString();
+                                             newUserPassword = MainActivity.user.getPassword();
+
+                                             if (newUserName.isEmpty() || newUserPhone.isEmpty() || newUserDoB.isEmpty()) {
+                                                 Toast.makeText(UserInformationActivity.this, "Vui lòng điền đủ thông tin!", Toast.LENGTH_SHORT).show();
+                                             } else {
+                                                 String oldPassword = MainActivity.user.getPassword();
+                                                 User editUser = new User(MainActivity.user.getId(),
+                                                         newUserName, newUserGender, newUserDoB, newUserPhone,
+                                                         MainActivity.user.getUsername(),
+                                                         newUserPassword);
+                                                 dao.updateUser(editUser);
+
+                                                 MainActivity.user = editUser;
+                                                 finish();
+                                             }
+                                         }
+        });
+
         btnCancel = findViewById(R.id.btnCancelChangeUserInformation);
-        btnCancel.setOnClickListener(view -> finish());
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void PickDate() {
@@ -91,7 +104,7 @@ public class UserInformationActivity extends AppCompatActivity implements Adapte
         DatePickerDialog dialog = new DatePickerDialog(this, (datePicker, year, month, day) -> {
             calendar.set(year, month, day);
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            edUser_DoB.setText(dateFormat.format(calendar.getTime()));
+            editTextUserDoB.setText(dateFormat.format(calendar.getTime()));
         }, calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
@@ -100,7 +113,7 @@ public class UserInformationActivity extends AppCompatActivity implements Adapte
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        spUser_gender.setTextAlignment(i);
+        spinnerUserGender.setTextAlignment(i);
     }
 
     @Override

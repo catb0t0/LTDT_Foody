@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.Objects;
-
 import hcmute.edu.vn.foody_04.MainActivity;
 import hcmute.edu.vn.foody_04.R;
 import hcmute.edu.vn.foody_04.UserInformationActivity;
@@ -77,44 +75,64 @@ public class ProfileFragment extends Fragment {
     private void referenceComponent(){
         // Components
         LinearLayout user_information = mainView.findViewById(R.id.layout_user_information);
-        user_information.setOnClickListener(view -> startActivity(new Intent(getActivity(), UserInformationActivity.class)));
+        user_information.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    startActivity(new Intent(getActivity(), UserInformationActivity.class));
+                                                }
+                                            });
 
         LinearLayout payment = mainView.findViewById(R.id.account_btn_layout_payment);
-        payment.setOnClickListener(view -> {
-            intent = new Intent(getActivity(), MainActivity.class);
-            intent.putExtra("request", "payment");
-            startActivity(intent);
+        payment.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           intent = new Intent(getActivity(), MainActivity.class);
+                                           intent.putExtra("request", "payment");
+                                           startActivity(intent);
+                                       }
         });
 
         LinearLayout history = mainView.findViewById(R.id.account_btn_layout_history);
-        history.setOnClickListener(view -> {
-            intent = new Intent(getActivity(), MainActivity.class);
-            intent.putExtra("request", "history");
-            startActivity(intent);
+        history.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           intent = new Intent(getActivity(), MainActivity.class);
+                                           intent.putExtra("request", "history");
+                                           startActivity(intent);
+                                       }
         });
 
         LinearLayout check = mainView.findViewById(R.id.account_btn_layout_check);
-        check.setOnClickListener(view -> {
-            intent = new Intent(getActivity(), MainActivity.class);
-            intent.putExtra("request", "check");
-            startActivity(intent);
+        check.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         intent = new Intent(getActivity(), MainActivity.class);
+                                         intent.putExtra("request", "check");
+                                         startActivity(intent);
+                                     }
         });
 
         LinearLayout hint = mainView.findViewById(R.id.account_btn_layout_hint);
-        hint.setOnClickListener(view -> {
-            intent = new Intent(getActivity(), MainActivity.class);
-            intent.putExtra("request", "hint");
-            startActivity(intent);
+        hint.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        intent = new Intent(getActivity(), MainActivity.class);
+                                        intent.putExtra("request", "hint");
+                                        startActivity(intent);
+                                    }
         });
 
 //        LinearLayout policy = mainView.findViewById(R.id.account_btn_layout_policy);
 
         LinearLayout logout = mainView.findViewById(R.id.account_btn_layout_logout);
-        logout.setOnClickListener(view -> {
-            Toast.makeText(this.getActivity(),
-                    "Đã đăng xuất khỏi hệ thống!",
-                    Toast.LENGTH_SHORT).show();
-            requireActivity().finish();
+        logout.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Toast.makeText(getActivity(),
+                                                  "Đã đăng xuất khỏi hệ thống!",
+                                                  Toast.LENGTH_SHORT).show();
+                                          requireActivity().finish();
+                                      }
         });
 
         TextView txtUser_name = mainView.findViewById(R.id.account_user_name);

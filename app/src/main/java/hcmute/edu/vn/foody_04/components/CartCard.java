@@ -14,7 +14,7 @@ import hcmute.edu.vn.foody_04.Beans.OrderDetail;
 import hcmute.edu.vn.foody_04.MainActivity;
 import hcmute.edu.vn.foody_04.R;
 import hcmute.edu.vn.foody_04.database.DbHandler;
-import hcmute.edu.vn.foody_04.fragment.ChatFragment;
+import hcmute.edu.vn.foody_04.fragment.ShippingFragment;
 
 public class CartCard extends LinearLayout {
     private Food food;
@@ -61,7 +61,7 @@ public class CartCard extends LinearLayout {
             dialog.setMessage("Bạn có muốn xóa món " + food.getName() + " không?");
             dialog.setPositiveButton("Có", (dialogInterface, i) -> {
                 MainActivity.dao.deleteOrderDetailByOrderIdAndFoodId(card.getOrderId(), food.getId());
-                ChatFragment.cartContainer.removeView(this);
+                ShippingFragment.cartContainer.removeView(this);
             });
             dialog.setNegativeButton("Không", (dialogInterface, i) -> {});
             dialog.show();

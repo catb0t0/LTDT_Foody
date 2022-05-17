@@ -25,15 +25,12 @@ public class DAO {
         db = dbHelper.getReadableDatabase();
     }
 
-    // region Restaurant
     public Restaurant getRestaurantInformation(Integer restaurantId){
         String query = "SELECT * FROM tblRestaurant WHERE id=" + restaurantId;
         Cursor cursor = dbHelper.getDataRow(query);
         return new Restaurant(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getBlob(4));
     }
-    // endregion
 
-    // region Order
     public Integer quantityOfOrder(){
         String query = "SELECT COUNT(*) FROM tblOrder WHERE status='Delivered'";
         Cursor cursor = dbHelper.getDataRow(query);
@@ -77,9 +74,7 @@ public class DAO {
         }
         return orderList;
     }
-    // endregion
 
-    // region User
     public void addUser(User user) {
         String query = "INSERT INTO tblUser VALUES(null,'" +
                 user.getName() + "', '" +
@@ -137,9 +132,7 @@ public class DAO {
         User existedUser = getUserByUsernameAndPassword(user.getUsername(), user.getPassword());
         return existedUser != null;
     }
-    // endregion
 
-    // region Food
     public FoodSize getFoodDefaultSize(Integer foodId){
         String sql = "SELECT * FROM tblFoodSize WHERE food_id=" + foodId;
         Cursor cursor = dbHelper.getDataRow(sql);
@@ -212,10 +205,7 @@ public class DAO {
                 }
             }
         }
-        catch (Exception e)
-        {
-
-        }
+        catch (Exception e) {}
         return listFood;
     }
 
@@ -237,10 +227,7 @@ public class DAO {
                 }
             }
         }
-        catch (Exception e)
-        {
-
-        }
+        catch (Exception e) {}
         return listRestaurant;
     }
 

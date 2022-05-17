@@ -24,10 +24,10 @@ import hcmute.edu.vn.foody_04.database.DbHandler;
 public class FoodInfoActivity extends AppCompatActivity {
 
     private ImageView image;
-    private LinearLayout layout_sizeS, layout_sizeM, layout_sizeL;
-    private TextView tvName, tvDescription, tvPrice,
-            tvRestaurantName, tvRestaurantAddress,
-            tvPriceSizeS,tvPriceSizeM, tvPriceSizeL;
+    private LinearLayout layoutSizeS, layoutSizeM, layoutSizeL;
+    private TextView textViewName, textViewDescription, textViewtvPrice,
+            textViewRestaurantName, textViewRestaurantAddress,
+            textViewPriceSizeS, textViewPriceSizeM, textViewPriceSizeL;
     private Button btnAddtoCart;
     private FoodSize foodSize;
     private DAO dao;
@@ -55,47 +55,47 @@ public class FoodInfoActivity extends AppCompatActivity {
             FoodSize foodSizeL = (FoodSize) bundle.getSerializable("foodSizeL");
 
             if(food!= null){
-                tvName.setText(food.getName());
-                tvDescription.setText(food.getDescription());
+                textViewName.setText(food.getName());
+                textViewDescription.setText(food.getDescription());
                 image.setImageBitmap(DbHandler.convertByteArrayToBitmap(food.getImage()));
 
                 if(foodSizeS != null){
-                    tvPriceSizeS.setText(getRoundPrice(foodSizeS.getPrice()));
-                    layout_sizeS.setOnClickListener(new View.OnClickListener() {
+                    textViewPriceSizeS.setText(getRoundPrice(foodSizeS.getPrice()));
+                    layoutSizeS.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            tvPrice.setText(tvPriceSizeS.getText());
+                            textViewtvPrice.setText(textViewPriceSizeS.getText());
                             foodSize = foodSizeS;
                         }
                     });
                 } else {
-                    layout_sizeS.setVisibility(View.INVISIBLE);
+                    layoutSizeS.setVisibility(View.INVISIBLE);
                 }
 
                 if(foodSizeM != null){
-                    tvPriceSizeM.setText(getRoundPrice(foodSizeM.getPrice()));
-                    layout_sizeM.setOnClickListener(new View.OnClickListener() {
+                    textViewPriceSizeM.setText(getRoundPrice(foodSizeM.getPrice()));
+                    layoutSizeM.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            tvPrice.setText(tvPriceSizeM.getText());
+                            textViewtvPrice.setText(textViewPriceSizeM.getText());
                             foodSize = foodSizeM;
                         }
                     });
                 } else {
-                    layout_sizeM.setVisibility(View.INVISIBLE);
+                    layoutSizeM.setVisibility(View.INVISIBLE);
                 }
 
                 if(foodSizeL != null){
-                    tvPriceSizeL.setText(getRoundPrice(foodSizeL.getPrice()));
-                    layout_sizeL.setOnClickListener(new View.OnClickListener() {
+                    textViewPriceSizeL.setText(getRoundPrice(foodSizeL.getPrice()));
+                    layoutSizeL.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            tvPrice.setText(tvPriceSizeL.getText());
+                            textViewtvPrice.setText(textViewPriceSizeL.getText());
                             foodSize = foodSizeL;
                         }
                     });
                 } else {
-                    layout_sizeL.setVisibility(View.INVISIBLE);
+                    layoutSizeL.setVisibility(View.INVISIBLE);
                 }
 
                 btnAddtoCart.setOnClickListener(new View.OnClickListener() {
@@ -124,14 +124,14 @@ public class FoodInfoActivity extends AppCompatActivity {
                             Toast.makeText(FoodInfoActivity.this, "Vui lòng chọn size", Toast.LENGTH_SHORT).show();
                     }
                 });
-                tvRestaurantName.setText(String.format("Tên cửa hàng \n%s", restaurant.getName()));
-                tvRestaurantAddress.setText(String.format("Địa chỉ\n%s", restaurant.getAddress()));
+                textViewRestaurantName.setText(String.format("Tên cửa hàng \n%s", restaurant.getName()));
+                textViewRestaurantAddress.setText(String.format("Địa chỉ\n%s", restaurant.getAddress()));
 
                 //tvRestaurantName.setText("000SSS");
                 //tvRestaurantAddress.setText("restaurant.getAddress())");
 
                 Double defaultPrice = bundle.getDouble("defaultPrice");
-                tvPrice.setText(getRoundPrice(defaultPrice));
+                textViewtvPrice.setText(getRoundPrice(defaultPrice));
             }
         }
     }
@@ -144,21 +144,21 @@ public class FoodInfoActivity extends AppCompatActivity {
         ImageView btnBack = findViewById(R.id.imgViewMenu_Back);
         btnBack.setOnClickListener(view -> this.finish());
 
-        tvName = findViewById(R.id.txtViewFoodName);
-        tvDescription = findViewById(R.id.txtViewDesciption);
-        tvPrice = findViewById(R.id.tvPrice);
+        textViewName = findViewById(R.id.txtViewFoodName);
+        textViewDescription = findViewById(R.id.txtViewDesciption);
+        textViewtvPrice = findViewById(R.id.tvPrice);
         image = findViewById(R.id.imgViewFoodInfo);
 
-        layout_sizeS = findViewById(R.id.layout_size_S);
-        layout_sizeM = findViewById(R.id.layout_size_M);
-        layout_sizeL = findViewById(R.id.layout_size_L);
+        layoutSizeS = findViewById(R.id.layout_size_S);
+        layoutSizeM = findViewById(R.id.layout_size_M);
+        layoutSizeL = findViewById(R.id.layout_size_L);
 
-        tvPriceSizeS = findViewById(R.id.tvPriceSizeS);
-        tvPriceSizeM = findViewById(R.id.tvPriceSizeM);
-        tvPriceSizeL = findViewById(R.id.tvPriceSizeL);
+        textViewPriceSizeS = findViewById(R.id.tvPriceSizeS);
+        textViewPriceSizeM = findViewById(R.id.tvPriceSizeM);
+        textViewPriceSizeL = findViewById(R.id.tvPriceSizeL);
 
-        tvRestaurantName = findViewById(R.id.tvRestaurantName);
-        tvRestaurantAddress = findViewById(R.id.tvRestaurantAddress);
+        textViewRestaurantName = findViewById(R.id.tvRestaurantName);
+        textViewRestaurantAddress = findViewById(R.id.tvRestaurantAddress);
 
         btnAddtoCart = findViewById(R.id.btnAddToCart);
     }

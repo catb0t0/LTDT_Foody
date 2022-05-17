@@ -63,51 +63,67 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         if(mainView == null){
             mainView = inflater.inflate(R.layout.fragment_home, container, false);
 
-            // region layout TypeFood
             ImageView layoutHamburger = mainView.findViewById(R.id.layoutHamburger);
-            layoutHamburger.setOnClickListener(view -> {
-                intent = new Intent(getActivity(), CategoryActivity.class);
-                intent.putExtra("typeFood", "Hamburger");
-                startActivity(intent);
+            layoutHamburger.setOnClickListener(new View.OnClickListener() {
+                                                   @Override
+                                                   public void onClick(View v) {
+                                                       intent = new Intent(getActivity(), CategoryActivity.class);
+                                                       intent.putExtra("typeFood", "Hamburger");
+                                                       startActivity(intent);
+                                                   }
             });
 
             ImageView layoutCake = mainView.findViewById(R.id.layoutTeamilk);
-            layoutCake.setOnClickListener(view -> {
-                intent = new Intent(getActivity(), CategoryActivity.class);
-                intent.putExtra("typeFood", "Trà sữa");
-                startActivity(intent);
+            layoutCake.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent = new Intent(getActivity(), CategoryActivity.class);
+                    intent.putExtra("typeFood", "Trà sữa");
+                    startActivity(intent);
+                }
             });
 
             ImageView layoutRice = mainView.findViewById(R.id.layoutRice);
-            layoutRice.setOnClickListener(view -> {
-                intent = new Intent(getActivity(), CategoryActivity.class);
-                intent.putExtra("typeFood", "Cơm sườn");
-                startActivity(intent);
+            layoutRice.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent = new Intent(getActivity(), CategoryActivity.class);
+                    intent.putExtra("typeFood", "Cơm sườn");
+                    startActivity(intent);
+                }
             });
 
             ImageView layoutMilkTea = mainView.findViewById(R.id.layoutCake);
-            layoutMilkTea.setOnClickListener(view -> {
-                intent = new Intent(getActivity(), CategoryActivity.class);
-                intent.putExtra("typeFood", "Bánh ngọt");
-                startActivity(intent);
+            layoutMilkTea.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent = new Intent(getActivity(), CategoryActivity.class);
+                    intent.putExtra("typeFood", "Bánh ngọt");
+                    startActivity(intent);
+                }
             });
 
             ImageView layoutIceCream = mainView.findViewById(R.id.layoutIcecream);
-            layoutIceCream.setOnClickListener(view -> {
-                intent = new Intent(getActivity(), CategoryActivity.class);
-                intent.putExtra("typeFood", "Kem");
-                startActivity(intent);
+            layoutIceCream.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent = new Intent(getActivity(), CategoryActivity.class);
+                    intent.putExtra("typeFood", "Kem");
+                    startActivity(intent);
+                }
             });
 
             ImageView layoutWaterFood = mainView.findViewById(R.id.layoutWater);
-            layoutWaterFood.setOnClickListener(view -> {
-                intent = new Intent(getActivity(), CategoryActivity.class);
-                intent.putExtra("typeFood", "Món nước");
-                startActivity(intent);
+            layoutWaterFood.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent = new Intent(getActivity(), CategoryActivity.class);
+                    intent.putExtra("typeFood", "Món nước");
+                    startActivity(intent);
+                }
             });
 
 
@@ -122,8 +138,6 @@ public class HomeFragment extends Fragment {
                             .commit();
                 }
             });
-            // endregion
-
             //Restaurant
 //            ImageView imageCart = mainView.findViewById(R.id.imgViewMenu_Main);
 //            imageCart.setOnClickListener(view1 -> {

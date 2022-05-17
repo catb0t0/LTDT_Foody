@@ -30,10 +30,10 @@ import hcmute.edu.vn.foody_04.components.OrderCard;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ChatFragment#newInstance} factory method to
+ * Use the {@link ShippingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChatFragment extends Fragment {
+public class ShippingFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -49,11 +49,11 @@ public class ChatFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ChatFragment() {
+    public ShippingFragment() {
     }
 
-    public static ChatFragment newInstance(String param1, String param2) {
-        ChatFragment fragment = new ChatFragment();
+    public static ShippingFragment newInstance(String param1, String param2) {
+        ShippingFragment fragment = new ShippingFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,7 +74,7 @@ public class ChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mainView = inflater.inflate(R.layout.fragment_chat, container, false);
+        mainView = inflater.inflate(R.layout.fragment_shipping, container, false);
 
         cartContainer = mainView.findViewById(R.id.cartContainer);
 
@@ -92,53 +92,68 @@ public class ChatFragment extends Fragment {
         tvLichSu = mainView.findViewById(R.id.tvLichSu);
 
         btnThanhToan = mainView.findViewById(R.id.btnChatThanhToan);
-        btnThanhToan.setOnClickListener(view ->{
-            //startActivity(new Intent(getActivity(), PaymentActivity.class));
+        btnThanhToan.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                startActivity(new Intent(getActivity(), PaymentActivity.class));
+                                            }
         });
 
         LoadOrder("craft");
         status = "craft";
 
-        btnGioHang.setOnClickListener(view ->{
-            resetAttribute();
-            btnGioHang.setBackground(ContextCompat.getDrawable(getContext(),R.color.blue));
-            tvGioHang.setTextColor(Color.WHITE);
+        btnGioHang.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              resetAttribute();
+                                              btnGioHang.setBackground(ContextCompat.getDrawable(getContext(), R.color.blue));
+                                              tvGioHang.setTextColor(Color.WHITE);
 
-            LoadOrder("craft");
+                                              LoadOrder("craft");
+                                          }
         });
 
-        btnDangDen.setOnClickListener(view->{
-            resetAttribute();
-            btnDangDen.setBackground(ContextCompat.getDrawable(getContext(),R.color.blue));
-            tvDangDen.setTextColor(Color.WHITE);
+        btnDangDen.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              resetAttribute();
+                                              btnDangDen.setBackground(ContextCompat.getDrawable(getContext(), R.color.blue));
+                                              tvDangDen.setTextColor(Color.WHITE);
 
-            LoadOrder("moving");
+                                              LoadOrder("moving");
+                                          }
         });
 
-        btnLichSu.setOnClickListener(view -> {
-            resetAttribute();
-            btnLichSu.setBackground(ContextCompat.getDrawable(getContext(),R.color.blue));
-            tvLichSu.setTextColor(Color.WHITE);
+        btnLichSu.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+                                             resetAttribute();
+                                             btnLichSu.setBackground(ContextCompat.getDrawable(getContext(), R.color.blue));
+                                             tvLichSu.setTextColor(Color.WHITE);
 
-            LoadOrder("history");
+                                             LoadOrder("history");
+                                         }
         });
         tvGioHang = mainView.findViewById(R.id.tvGioHang);
         tvDangDen = mainView.findViewById(R.id.tvDangDen);
         tvLichSu = mainView.findViewById(R.id.tvLichSu);
 
         Button btnThanhToan = mainView.findViewById(R.id.btnChatThanhToan);
-        btnThanhToan.setOnClickListener(view -> {
-            if (!status.equals("craft"))
-                return;
+        btnThanhToan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!status.equals("craft"))
+                    return;
 
-            Cursor cursor = MainActivity.dao.getCart(MainActivity.user.getId());
-            if (!cursor.moveToFirst())
-                return;
+                Cursor cursor = MainActivity.dao.getCart(MainActivity.user.getId());
+                if (!cursor.moveToFirst())
+                    return;
 
-            PaymentActivity.user = MainActivity.user;
-            Intent intent = new Intent(getActivity(), PaymentActivity.class);
-            intent.putExtra("orderId", cursor.getInt(0));
-            startActivity(intent);
+                PaymentActivity.user = MainActivity.user;
+                Intent intent = new Intent(getActivity(), PaymentActivity.class);
+                intent.putExtra("orderId", cursor.getInt(0));
+                startActivity(intent);
+            }
         });
 
         return mainView;
@@ -171,10 +186,13 @@ public class ChatFragment extends Fragment {
                 if (orderArrayList.size() > 0) {
                     for (Order order : orderArrayList) {
                         OrderCard card = new OrderCard(getContext(), order);
-                        card.setOnClickListener(view -> {
-                            Intent intent = new Intent(getContext(), ViewOrderActivity.class);
-                            intent.putExtra("order", order);
-                            startActivity(intent);
+                        card.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        Intent intent = new Intent(getContext(), ViewOrderActivity.class);
+                                                        intent.putExtra("order", order);
+                                                        startActivity(intent);
+                                                    }
                         });
                         cartContainer.addView(card);
                     }

@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import hcmute.edu.vn.foody_04.Beans.User;
 import hcmute.edu.vn.foody_04.DAO.DAO;
-import hcmute.edu.vn.foody_04.database.DbHandler;
 
 public class Login extends AppCompatActivity {
     private DAO dao;
@@ -36,7 +35,7 @@ public class Login extends AppCompatActivity {
 
                 if (username.isEmpty() || password.isEmpty()) {
 
-                    Toast.makeText(Login.this, "Vui lòng điền đủ thông tin!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Thiếu thông tin", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -44,7 +43,6 @@ public class Login extends AppCompatActivity {
 
                 boolean isRightAuthentication = false;
                 if (userExist != null) {
-//                System.out.println(userExist);
                     isRightAuthentication = dao.signIn(userExist);
                 }
                 if (isRightAuthentication) {

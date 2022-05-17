@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 
 import hcmute.edu.vn.foody_04.Beans.User;
 import hcmute.edu.vn.foody_04.DAO.DAO;
-import hcmute.edu.vn.foody_04.fragment.ChatFragment;
+import hcmute.edu.vn.foody_04.fragment.ShippingFragment;
 import hcmute.edu.vn.foody_04.fragment.HomeFragment;
 import hcmute.edu.vn.foody_04.fragment.ProfileFragment;
 
@@ -26,14 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private static int clickToLogout;
     private boolean Food = true;
     public static User user;
-    private Fragment homeFragment, chatFragment, profileFragment;
+    private Fragment homeFragment, shippingFragment, profileFragment;
     public static DAO dao;
-
-    private void referenceFragment(){
-        homeFragment = new HomeFragment();
-        profileFragment = new ProfileFragment();
-        chatFragment = new ChatFragment();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         clickToLogout = 0;
 
-        referenceFragment();
+        homeFragment = new HomeFragment();
+        profileFragment = new ProfileFragment();
+        shippingFragment = new ShippingFragment();
+
         dao = new DAO(this);
 
         Intent intent = getIntent();
@@ -67,11 +64,8 @@ public class MainActivity extends AppCompatActivity {
         String request = intent.getStringExtra("request");
         if(request != null) {
             switch (request) {
-                case "payment":
-                case "history":
-                case "check":
                 case "cart":
-                    loadFragment(chatFragment);
+                    loadFragment(shippingFragment);
                     navigation.getMenu().getItem(2).setChecked(true);
                     break;
                 default:
@@ -109,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(homeFragment);
                 return true;
             case R.id.navigation_chat:
-                loadFragment(chatFragment);
+                loadFragment(shippingFragment);
                 return true;
             case R.id.navigation_profile:
                 loadFragment(profileFragment);
@@ -119,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void loadFragment(Fragment fragment) {
-        // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
         transaction.addToBackStack(null);

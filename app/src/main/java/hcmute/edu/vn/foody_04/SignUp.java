@@ -1,13 +1,13 @@
 package hcmute.edu.vn.foody_04;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import hcmute.edu.vn.foody_04.Beans.User;
 import hcmute.edu.vn.foody_04.DAO.DAO;
@@ -43,7 +43,7 @@ public class SignUp extends AppCompatActivity {
                 if(dao.UserExited(username)){
                     Toast.makeText(SignUp.this, "Người dùng đã tồn tại!", Toast.LENGTH_SHORT).show();
                 } else {
-                    dao.addUser(new User(null, "", "Male", "1/1/2000", "", username, password));
+                    dao.addUser(new User(null, "", "Male", "1/1/2001", "000000000", username, password));
                     Toast.makeText(SignUp.this, "Tạo tài khoản thành công!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
                     intent.putExtra("username", username);

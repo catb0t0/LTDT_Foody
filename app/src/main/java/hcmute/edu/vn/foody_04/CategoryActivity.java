@@ -38,10 +38,13 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void referencesComponents(){
         ImageView image = findViewById(R.id.imgView_CategoryCart);
-        image.setOnClickListener(view -> {
-            Intent intent = new Intent(CategoryActivity.this, MainActivity.class);
-            intent.putExtra("request","cart");
-            startActivity(intent);
+        image.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         Intent intent = new Intent(CategoryActivity.this, MainActivity.class);
+                                         intent.putExtra("request", "cart");
+                                         startActivity(intent);
+                                     }
         });
 
         SearchView searchBar = findViewById(R.id.CategorySearch);
